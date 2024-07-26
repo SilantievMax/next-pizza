@@ -1,4 +1,4 @@
-import { Categories, Container, Filters, ProductCard, ProductsGroupList, SortPopup, Title, TopBar } from '@/components/shared';
+import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/components/shared';
 
 const productsPizza = [
   {

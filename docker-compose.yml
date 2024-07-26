@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres
+    container_name: postgresql_container
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: xxXX1234
+      POSTGRES_DB: next-pizza
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
