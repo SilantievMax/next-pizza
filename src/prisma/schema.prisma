@@ -15,6 +15,7 @@ model User {
   fullName   String
   password   String
   provider   String?
+  verified   DateTime
   providerId String?
 
   cart             Cart?
