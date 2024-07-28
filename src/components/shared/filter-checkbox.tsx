@@ -4,10 +4,10 @@ import { Checkbox } from '../ui';
 interface Props {
   text: string;
   value: string;
+  name?: string;
+  checked?: boolean;
   endAdornment?: ReactNode;
   onCheckedChange?: (checked: boolean) => void;
-  checked?: boolean;
-  name?: string;
 }
 
 export type FilterCheckboxType = Props;

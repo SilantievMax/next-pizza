@@ -5,12 +5,12 @@ import * as SliderPrimitive from '@radix-ui/react-slider';
 import { cn } from '@/lib/utils';
 
 interface Props {
-  className?: string;
   min: number;
   max: number;
   step: number;
-  formatLabel?: (value: number) => string;
+  className?: string;
   value?: number[] | readonly number[];
+  formatLabel?: (value: number) => string;
   onValueChange?: (values: number[]) => void;
 }
 

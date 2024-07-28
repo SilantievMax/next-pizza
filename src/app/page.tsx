@@ -108,7 +108,7 @@ const productsPizza = [
   },
 ];
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
       <Container className='mt-10'>

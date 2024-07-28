@@ -9,7 +9,7 @@ interface Props {
 }
 
 const cats = [
-  { id: 1, name: 'Пиццы' },
+  { id: 1, name: 'Пицца' },
   { id: 2, name: 'Комбо' },
   { id: 3, name: 'Закуски' },
   { id: 4, name: 'Коктейли' },

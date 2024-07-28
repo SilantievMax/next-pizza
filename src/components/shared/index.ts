@@ -7,6 +7,7 @@ export { SortPopup } from './sort-popup';
 export { Categories } from './categories';
 export { RangeSlider } from './range-slider';
 export { ProductCard } from './product-card';
+export { SearchInput } from './search-input';
 export { FilterCheckbox } from './filter-checkbox';
 export { ProductsGroupList } from './products-group-list';
 export { CheckboxFiltersGroup } from './checkbox-filters-group';
