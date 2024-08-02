@@ -1,9 +1,10 @@
 'use client';
 
-import { ChangeEvent, FC, useState } from 'react';
-import { Input, Skeleton } from '../ui';
-import { FilterCheckbox, FilterCheckboxType } from './filter-checkbox';
 import { cn } from '@/lib/utils';
+import { ChangeEvent, FC, useState } from 'react';
+import { Input, Skeleton } from '@/components/ui';
+import { FilterCheckbox } from '@/components/shared';
+import { FilterCheckboxType } from './filter-checkbox';
 
 type Item = FilterCheckboxType;
 

@@ -1,5 +1,5 @@
-import { FC, PropsWithChildren } from 'react';
 import { cn } from '@/lib/utils';
+import { FC, PropsWithChildren } from 'react';
 
 interface Props {
   className?: string;

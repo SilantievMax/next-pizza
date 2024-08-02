@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Link from 'next/link';
-import { Title } from './title';
-import { Button } from '../ui';
 import { Plus } from 'lucide-react';
+import { Button } from '@/components/ui';
+import { Title } from '@/components/shared';
 
 interface Props {
   id: number;

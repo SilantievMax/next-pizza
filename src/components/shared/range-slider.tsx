@@ -1,8 +1,8 @@
 'use client';
 
-import { FC, forwardRef, Fragment, useEffect, useState } from 'react';
-import * as SliderPrimitive from '@radix-ui/react-slider';
 import { cn } from '@/lib/utils';
+import * as SliderPrimitive from '@radix-ui/react-slider';
+import { FC, forwardRef, Fragment, useEffect, useState } from 'react';
 
 interface Props {
   min: number;

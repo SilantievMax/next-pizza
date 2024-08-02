@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Checkbox } from '../ui';
+import { Checkbox } from '@/components/ui';
 
 interface Props {
   text: string;
