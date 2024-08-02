@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import * as SliderPrimitive from '@radix-ui/react-slider';
-import { FC, forwardRef, Fragment, useEffect, useState } from 'react';
+import { FC, forwardRef, Fragment, RefObject, useEffect, useState } from 'react';
 
 interface Props {
   min: number;
@@ -31,7 +31,7 @@ const RangeSlider: FC<Props> = forwardRef(({ className, min, max, step, formatLa
 
   return (
     <SliderPrimitive.Root
-      ref={ref as React.RefObject<HTMLDivElement>}
+      ref={ref as RefObject<HTMLDivElement>}
       min={min}
       max={max}
       step={step}

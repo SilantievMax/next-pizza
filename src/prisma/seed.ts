@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from '@prisma/client';
-import { cartItems, carts, categories, ingredients, pizza1, pizza2, pizza3, products, users } from './constants';
+import { cartItems, carts, categories, _ingredients, pizza1, pizza2, pizza3, products, users } from './constants';
 
 const prisma = new PrismaClient();
 
@@ -30,7 +30,7 @@ async function up() {
   });
 
   await prisma.ingredient.createMany({
-    data: ingredients,
+    data: _ingredients,
   });
 
   const product1 = await prisma.product.create({

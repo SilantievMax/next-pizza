@@ -7,3 +7,4 @@ export { Select } from './select';
 export { Popover } from './popover';
 export { Checkbox } from './checkbox';
 export { Skeleton } from './skeleton';
+export { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter } from './sheet';

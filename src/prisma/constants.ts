@@ -19,7 +19,7 @@ export const users = [
 
 export const categories = [{ name: 'Пиццы' }, { name: 'Завтрак' }, { name: 'Закуски' }, { name: 'Коктейли' }, { name: 'Напитки' }];
 
-export const ingredients = [
+export const _ingredients = [
   {
     name: 'Сырный бортик',
     price: 179,
@@ -200,7 +200,7 @@ export const pizza1 = {
   imageUrl: '/pizza/11EE7D61304FAF5A98A6958F2BB2D260.webp',
   categoryId: 1,
   ingredients: {
-    connect: ingredients.slice(0, 5),
+    connect: _ingredients.slice(0, 5),
   },
 };
 
@@ -209,7 +209,7 @@ export const pizza2 = {
   imageUrl: '/pizza/11EE7D610CF7E265B7C72BE5AE757CA7.webp',
   categoryId: 1,
   ingredients: {
-    connect: ingredients.slice(5, 10),
+    connect: _ingredients.slice(5, 10),
   },
 };
 
@@ -218,7 +218,7 @@ export const pizza3 = {
   imageUrl: '/pizza/11EE7D61706D472F9A5D71EB94149304.webp',
   categoryId: 1,
   ingredients: {
-    connect: ingredients.slice(10, 40),
+    connect: _ingredients.slice(10, 40),
   },
 };
 
