@@ -5,15 +5,14 @@ import { Title } from '@/components/shared';
 
 interface Props {
   name: string;
+  price: number;
   imageUrl: string;
+  loading?: boolean;
   className?: string;
-  onClickAdd?: VoidFunction;
+  onSubmit?: VoidFunction;
 }
 
-const textDetails = 'Lorem dedfojsh osrij';
-const totalPrice = 300;
-
-export const ChooseProductForm: FC<Props> = ({ imageUrl, name, className, onClickAdd }) => {
+export const ChooseProductForm: FC<Props> = ({ imageUrl, name, className, onSubmit, price, loading }) => {
   return (
     <div className={cn('flex flex-1', className)}>
       <div className='flex items-center justify-center flex-1 relative w-full'>
@@ -23,9 +22,9 @@ export const ChooseProductForm: FC<Props> = ({ imageUrl, name, className, onClic
       <div className='w-[490px] bg-[#F7F6F5] p-7'>
         <Title text={name} size='md' className='font-extrabold mb-1' />
 
-        <p className='text-gray-400'>{textDetails}</p>
-
-        <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10'>Добавить в корзину {totalPrice} ₽</Button>
+        <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={onSubmit} loading={loading}>
+          Добавить в корзину {price} ₽
+        </Button>
       </div>
     </div>
   );

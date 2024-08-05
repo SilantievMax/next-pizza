@@ -14,23 +14,21 @@ interface Props {
   imageUrl: string;
   items: ProductItem[];
   ingredients: Ingredient[];
+  onSubmit: (itemId: number, ingredients: number[]) => void;
+  loading?: boolean;
   className?: string;
   onClickAddCart?: VoidFunction;
 }
 
-export const ChoosePizzatForm: FC<Props> = ({ imageUrl, ingredients, name, className, items, onClickAddCart }) => {
-  const { availableSizes, selectedIngredients, setSize, setType, size, type, addIngredient } = usePizzaOptions(items);
+export const ChoosePizzatForm: FC<Props> = ({ imageUrl, ingredients, name, className, items, loading, onSubmit }) => {
+  const { availableSizes, selectedIngredients, setSize, setType, size, type, addIngredient, currentItemId } = usePizzaOptions(items);
 
   const { textDetails, totalPrice } = getPizzaDetails(type, size, items, ingredients, selectedIngredients);
 
   const handleClickAdd = () => {
-    onClickAddCart?.();
-
-    console.log({
-      size,
-      type,
-      ingredients: selectedIngredients,
-    });
+    if (currentItemId) {
+      onSubmit(currentItemId, Array.from(selectedIngredients));
+    }
   };
 
   return (
@@ -63,7 +61,7 @@ export const ChoosePizzatForm: FC<Props> = ({ imageUrl, ingredients, name, class
           </div>
         </div>
 
-        <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={handleClickAdd}>
+        <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={handleClickAdd} loading={loading}>
           Добавить в корзину {totalPrice} ₽
         </Button>
       </div>

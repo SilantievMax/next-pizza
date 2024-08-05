@@ -1,9 +1,9 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { useCategoryStore } from '@/store';
 import { useIntersection } from 'react-use';
 import { FC, useEffect, useRef } from 'react';
-import { useCategoryStore } from '@/store/category';
 import { Title, ProductCard } from '@/components/shared';
 
 interface Props {
