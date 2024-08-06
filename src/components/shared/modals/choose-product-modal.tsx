@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import toast from 'react-hot-toast';
 import { useCartStore } from '@/store';
 import { useRouter } from 'next/navigation';

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { User } from 'lucide-react';
 import { Button } from '@/components/ui';
 import { CartButton, Container, SearchInput } from '@/components/shared';

@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { Input } from '@/components/ui';
 import { useFilter, useIngredientststs, useQueryFilters } from '@/hooks';
 import { Title, RangeSlider, CheckboxFiltersGroup } from '@/components/shared';

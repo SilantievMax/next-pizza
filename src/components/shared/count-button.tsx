@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { CountIconButton } from '@/components/shared';
 
 interface Props {

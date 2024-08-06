@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { Trash2Icon } from 'lucide-react';
 import * as CartItem from './cart-item-details';
 import { CountButton } from '@/components/shared';

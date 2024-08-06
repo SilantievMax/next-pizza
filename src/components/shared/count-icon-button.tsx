@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { Minus, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CountButtonProps } from './count-button';

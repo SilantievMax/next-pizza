@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
+import { formatterPrice, cn } from '@/lib';
 import { CircleCheck } from 'lucide-react';
 
 interface Props {
@@ -27,7 +27,7 @@ export const IngredientItem: FC<Props> = ({ imageUrl, name, price, active, class
 
       <span className='text-xs mb-1'>{name}</span>
 
-      <span className='font-bold'>{price} ₽</span>
+      <span className='font-bold'>{formatterPrice(price)}</span>
     </div>
   );
 };

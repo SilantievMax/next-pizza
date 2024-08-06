@@ -1,11 +1,10 @@
 'use client';
 
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
-import { getPizzaDetails } from '@/lib';
 import { Button } from '@/components/ui';
 import { usePizzaOptions } from '@/hooks';
 import { Ingredient, ProductItem } from '@prisma/client';
+import { formatterPrice, getPizzaDetails, cn } from '@/lib';
 import { PizzaSize, PizzaType, pizzaTypes } from '@/constants/pizza';
 import { Title, PizzaImage, GroupVariants, IngredientItem } from '@/components/shared';
 
@@ -62,7 +61,7 @@ export const ChoosePizzatForm: FC<Props> = ({ imageUrl, ingredients, name, class
         </div>
 
         <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={handleClickAdd} loading={loading}>
-          Добавить в корзину {totalPrice} ₽
+          Добавить в корзину {formatterPrice(totalPrice)}
         </Button>
       </div>
     </div>

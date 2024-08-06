@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { useCategoryStore } from '@/store';
 import { useIntersection } from 'react-use';
 import { FC, useEffect, useRef } from 'react';

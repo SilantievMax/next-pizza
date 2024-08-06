@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import { useCartStore } from '@/store';
 import { ArrowRight } from 'lucide-react';
-import { getCartItemDetails } from '@/lib';
 import { CartDrawerItem } from '@/components/shared';
 import { FC, PropsWithChildren, useEffect } from 'react';
 import { PizzaSize, PizzaType } from '@/constants/pizza';
+import { formatterPrice, getCartItemDetails } from '@/lib';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, Button } from '@/components/ui';
 
 interface Props {}
@@ -65,7 +65,7 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children }) => {
                 <div className='flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2' />
               </span>
 
-              <span className='font-bold text-lg'>{totalAmount} ₽</span>
+              <span className='font-bold text-lg'>{formatterPrice(totalAmount)}</span>
             </div>
 
             <Link href='/cart'>

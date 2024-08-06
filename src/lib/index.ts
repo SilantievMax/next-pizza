@@ -1,3 +1,5 @@
+export { cn } from './utils';
+export { formatterPrice } from './formatter-price';
 export { getCartDetails } from './get-cart-details';
 export { getPizzaDetails } from './get-pizza-details';
 export { findOrCreateCart } from './find-or-create-cart';

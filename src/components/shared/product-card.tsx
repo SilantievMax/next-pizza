@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { Plus } from 'lucide-react';
+import { formatterPrice } from '@/lib';
 import { Button } from '@/components/ui';
 import { Title } from '@/components/shared';
 
@@ -27,7 +28,7 @@ export const ProductCard: FC<Props> = ({ id, imageUrl, name, price, className })
 
         <div className='flex justify-between items-center mt-4'>
           <span className='text-[20px]'>
-            от <b>{price} ₽</b>
+            от <b>{formatterPrice(price)}</b>
           </span>
 
           <Button variant='secondary' className='text-base font-bold'>

@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib';
 import { ChangeEvent, FC, useState } from 'react';
 import { Input, Skeleton } from '@/components/ui';
 import { FilterCheckbox } from '@/components/shared';

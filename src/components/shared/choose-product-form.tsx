@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui';
+import { formatterPrice, cn } from '@/lib';
 import { Title } from '@/components/shared';
 
 interface Props {
@@ -23,7 +23,7 @@ export const ChooseProductForm: FC<Props> = ({ imageUrl, name, className, onSubm
         <Title text={name} size='md' className='font-extrabold mb-1' />
 
         <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={onSubmit} loading={loading}>
-          Добавить в корзину {price} ₽
+          Добавить в корзину {formatterPrice(price)}
         </Button>
       </div>
     </div>
