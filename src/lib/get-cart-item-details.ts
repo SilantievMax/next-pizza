@@ -10,7 +10,7 @@ import { mapPizzaType, PizzaSize, PizzaType } from '@/constants/pizza';
  *
  * @returns
  */
-export const getCartItemDetails = (ingredients: CartStateItem['ingredients'], pizzaType: PizzaType, pizzaSize: PizzaSize): string => {
+export const getCartItemDetails = (ingredients: CartStateItem['ingredients'], pizzaType?: PizzaType, pizzaSize?: PizzaSize): string => {
   const details = [];
 
   if (pizzaSize && pizzaType) {

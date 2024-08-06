@@ -2,33 +2,22 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useCartStore } from '@/store';
+import { useCart } from '@/hooks';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { FC, PropsWithChildren, useEffect } from 'react';
+import { FC, PropsWithChildren, useState } from 'react';
 import { PizzaSize, PizzaType } from '@/constants/pizza';
 import { formatterPrice, getCartItemDetails } from '@/lib';
 import { CartDrawerItem, Title } from '@/components/shared';
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, Button, SheetClose } from '@/components/ui';
 
-interface Props {}
-
-export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children }) => {
-  const [items, totalAmount, fetchCartItems, removeCartItem, updateItemQuantity] = useCartStore((state) => [
-    state.items,
-    state.totalAmount,
-    state.fetchCartItems,
-    state.removeCartItem,
-    state.updateItemQuantity,
-  ]);
+export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
+  const [redirecting, setRedirecting] = useState(false);
+  const { items, removeCartItem, totalAmount, updateItemQuantity } = useCart();
 
   const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
     const newQuantity = type === 'plus' ? quantity + 1 : quantity - 1;
     updateItemQuantity(id, newQuantity);
   };
-
-  useEffect(() => {
-    fetchCartItems();
-  }, []);
 
   return (
     <Sheet>
@@ -55,9 +44,7 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children }) => {
                     disabled={item.disabled}
                     onClickRemove={() => removeCartItem(item.id)}
                     onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
-                    details={
-                      item.pizzaSize && item.pizzaType ? getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize) : ''
-                    }
+                    details={getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize)}
                   />
                 </div>
               ))}
@@ -74,10 +61,10 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children }) => {
                   <span className='font-bold text-lg'>{formatterPrice(totalAmount)}</span>
                 </div>
 
-                <Link href='/cart'>
-                  <Button type='submit' className='w-full h-12 text-base'>
+                <Link href='/checkout'>
+                  <Button loading={redirecting} onClick={() => setRedirecting(true)} type='submit' className='w-full h-12 text-base'>
                     Оформить заказ
-                    <ArrowRight width={20} className='ml-2' />
+                    <ArrowRight size={20} className='ml-2' />
                   </Button>
                 </Link>
               </div>
@@ -93,7 +80,7 @@ export const CartDrawer: FC<PropsWithChildren<Props>> = ({ children }) => {
 
             <SheetClose>
               <Button className='w-56 h-12 text-base' size='lg'>
-                <ArrowLeft className='mr-2' width={20} />
+                <ArrowLeft className='mr-2' size={20} />
                 Вернуться назад
               </Button>
             </SheetClose>
