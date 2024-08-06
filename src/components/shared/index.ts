@@ -13,6 +13,7 @@ export { RangeSlider } from './range-slider';
 export { ProductCard } from './product-card';
 export { SearchInput } from './search-input';
 export { CountButton } from './count-button';
+export { ProductForm } from './product-form';
 export { GroupVariants } from './group-variants';
 export { FilterCheckbox } from './filter-checkbox';
 export { IngredientItem } from './ingredient-item';

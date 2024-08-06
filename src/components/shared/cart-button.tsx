@@ -16,7 +16,7 @@ export const CartButton: FC<Props> = ({ className }) => {
 
   return (
     <CartDrawer>
-      <Button className={cn('group relative', { 'w-[105px]': loading }, className)} loading={loading}>
+      <Button className={cn('group relative', className)}>
         <b>{formatterPrice(totalAmount)}</b>
         <span className='h-full w-[1px] bg-white/30 mx-3' />
 
