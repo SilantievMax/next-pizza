@@ -1,6 +1,7 @@
 export * from './form';
 export * from './modals';
 export * from './checkout';
+export * from './email-templies';
 export { Title } from './title';
 export { Header } from './header';
 export { TopBar } from './top-bar';

@@ -1,4 +1,5 @@
 export { cn } from './utils';
+export { sendMail } from './send-email';
 export { findPizzas } from './find-pizzas';
 export { formatterPrice } from './formatter-price';
 export { getCartDetails } from './get-cart-details';

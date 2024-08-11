@@ -17,7 +17,6 @@ export interface CartState {
   addCartItem: (values: any) => Promise<void>;
 
   /* Запрос на удаление товара из корзины */
-  // todo нужно типизировать
   removeCartItem: (id: number) => Promise<void>;
 
   /* Запрос на обновление колличества товара */

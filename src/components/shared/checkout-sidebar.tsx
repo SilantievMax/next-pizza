@@ -52,7 +52,7 @@ export const CheckoutSidebar: FC<Props> = ({ totalAmount, className, loading }) 
         value={loading ? <Skeleton className='w-24 h-6 rounded-[6px]' /> : formatterPrice(DELIVERY_PRICE)}
       />
 
-      <Button className='w-full h-14 rounded-2xl mt-6 text-base font-bold' type='submit'>
+      <Button className='w-full h-14 rounded-2xl mt-6 text-base font-bold' type='submit' loading={loading}>
         Перейти к оплате
         <ArrowRight className='ml-2' size={20} />
       </Button>
