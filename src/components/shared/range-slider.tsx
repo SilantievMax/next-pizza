@@ -37,7 +37,7 @@ const RangeSlider: FC<Props> = forwardRef(({ className, min, max, step, formatLa
       step={step}
       value={localValues}
       onValueChange={handleValueChange}
-      className={cn('relative flex w-full touch-none select-none mb-6 items-center', className)}
+      className={cn('relative mb-6 flex w-full touch-none select-none items-center', className)}
       {...props}
     >
       <SliderPrimitive.Track className='relative h-1 w-full grow overflow-hidden rounded-full bg-primary/20'>

@@ -47,28 +47,28 @@ export const CheckboxFiltersGroup: FC<Props> = ({
   if (loading) {
     return (
       <div className={className}>
-        <p className='font-bold mb-3'>{title}</p>
+        <p className='mb-3 font-bold'>{title}</p>
 
         {...Array(limit)
           .fill(0)
-          .map((_, index) => <Skeleton className='h-6 mb-4 rounded-[8px]' key={index} />)}
+          .map((_, index) => <Skeleton className='mb-4 h-6 rounded-[8px]' key={index} />)}
 
-        <Skeleton className='w-28 h-6 mb-4 rounded-[8px]' />
+        <Skeleton className='mb-4 h-6 w-28 rounded-[8px]' />
       </div>
     );
   }
 
   return (
     <div className={className}>
-      <p className='font-bold mb-3'>{title}</p>
+      <p className='mb-3 font-bold'>{title}</p>
 
       {showAll && (
         <div className='mb-5'>
-          <Input onChange={onChangeSearchInput} placeholder={searchInputPlaceholder} className='bg-gray-50 border-none' />
+          <Input onChange={onChangeSearchInput} placeholder={searchInputPlaceholder} className='border-none bg-gray-50' />
         </div>
       )}
 
-      <div className='flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar'>
+      <div className='scrollbar flex max-h-96 flex-col gap-4 overflow-auto pr-2'>
         {list.map((item, index) => (
           <FilterCheckbox
             key={index}
@@ -83,8 +83,8 @@ export const CheckboxFiltersGroup: FC<Props> = ({
       </div>
 
       {items.length > limit && (
-        <div className={cn({ 'border-t border-t-neutral-100 mt-4': showAll })}>
-          <button className='text-primary mt-3' onClick={() => setShowAll(!showAll)}>
+        <div className={cn({ 'mt-4 border-t border-t-neutral-100': showAll })}>
+          <button className='mt-3 text-primary' onClick={() => setShowAll(!showAll)}>
             {showAll ? 'Скрыть' : '+ Показать все'}
           </button>
         </div>

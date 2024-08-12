@@ -18,14 +18,14 @@ interface Props {
 
 export const GroupVariants: FC<Props> = ({ items, className, onClick, value }) => {
   return (
-    <div className={cn('flex justify-between bg-[#F3F3F7] rounded-3xl p-1 select-none', className)}>
+    <div className={cn('flex select-none justify-between rounded-3xl bg-[#F3F3F7] p-1', className)}>
       {items.map((item) => (
         <button
           key={item.name}
           onClick={() => onClick?.(item.value)}
-          className={cn('flex items-center justify-center h-[30px] px-5 flex-1 rounded-3xl transition-all duration-300 text-sm', {
+          className={cn('flex h-[30px] flex-1 items-center justify-center rounded-3xl px-5 text-sm transition-all duration-300', {
             'bg-white shadow': item.value === value,
-            'text-gray-500 opacity-50 pointer-events-none': item.disabled,
+            'pointer-events-none text-gray-500 opacity-50': item.disabled,
           })}
         >
           {item.name}

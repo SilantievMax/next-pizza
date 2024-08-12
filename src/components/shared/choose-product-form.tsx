@@ -15,14 +15,14 @@ interface Props {
 export const ChooseProductForm: FC<Props> = ({ imageUrl, name, className, onSubmit, price, loading }) => {
   return (
     <div className={cn('flex flex-1', className)}>
-      <div className='flex items-center justify-center flex-1 relative w-full'>
-        <img src={imageUrl} alt={name} className='relative left-2 top-2 transition-all z-10 duration-300 w-[350px] h-[350px]' />
+      <div className='relative flex w-full flex-1 items-center justify-center'>
+        <img src={imageUrl} alt={name} className='relative left-2 top-2 z-10 h-[350px] w-[350px] transition-all duration-300' />
       </div>
 
       <div className='w-[490px] bg-[#F7F6F5] p-7'>
-        <Title text={name} size='md' className='font-extrabold mb-1' />
+        <Title text={name} size='md' className='mb-1 font-extrabold' />
 
-        <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={onSubmit} loading={loading}>
+        <Button className='mt-10 h-[50px] w-full rounded-[18px] px-10 text-base' onClick={onSubmit} loading={loading}>
           Добавить в корзину {formatterPrice(price)}
         </Button>
       </div>

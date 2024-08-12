@@ -16,16 +16,16 @@ export const IngredientItem: FC<Props> = ({ imageUrl, name, price, active, class
     <div
       onClick={onClick}
       className={cn(
-        'flex items-center flex-col p-1 rounded-md w-32 text-center relative cursor-pointer shadow-md bg-white',
+        'relative flex w-32 cursor-pointer flex-col items-center rounded-md bg-white p-1 text-center shadow-md',
         { 'border border-primary': active },
-        className
+        className,
       )}
     >
-      {active && <CircleCheck className='absolute top-2 right-2 text-primary' />}
+      {active && <CircleCheck className='absolute right-2 top-2 text-primary' />}
 
       <img width={110} height={110} src={imageUrl} />
 
-      <span className='text-xs mb-1'>{name}</span>
+      <span className='mb-1 text-xs'>{name}</span>
 
       <span className='font-bold'>{formatterPrice(price)}</span>
     </div>

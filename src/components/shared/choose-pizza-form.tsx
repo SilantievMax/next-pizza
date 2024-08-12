@@ -35,17 +35,17 @@ export const ChoosePizzatForm: FC<Props> = ({ imageUrl, ingredients, name, class
       <PizzaImage imageUrl={imageUrl} size={size} />
 
       <div className='w-[490px] bg-[#F7F6F5] p-7'>
-        <Title text={name} size='md' className='font-extrabold mb-1' />
+        <Title text={name} size='md' className='mb-1 font-extrabold' />
 
         <p className='text-gray-400'>{textDetails}</p>
 
-        <div className='flex flex-col gap-4 mt-5'>
+        <div className='mt-5 flex flex-col gap-4'>
           <GroupVariants items={availableSizes} value={String(size)} onClick={(value) => setSize(Number(value) as PizzaSize)} />
 
           <GroupVariants items={pizzaTypes} value={String(type)} onClick={(value) => setType(Number(value) as PizzaType)} />
         </div>
 
-        <div className='bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5'>
+        <div className='scrollbar mt-5 h-[420px] overflow-auto rounded-md bg-gray-50 p-5'>
           <div className='grid grid-cols-3 gap-3'>
             {ingredients.map((ingredient) => (
               <IngredientItem
@@ -60,7 +60,7 @@ export const ChoosePizzatForm: FC<Props> = ({ imageUrl, ingredients, name, class
           </div>
         </div>
 
-        <Button className='h-[50px] px-10 text-base rounded-[18px] w-full mt-10' onClick={handleClickAdd} loading={loading}>
+        <Button className='mt-10 h-[50px] w-full rounded-[18px] px-10 text-base' onClick={handleClickAdd} loading={loading}>
           Добавить в корзину {formatterPrice(totalPrice)}
         </Button>
       </div>

@@ -19,15 +19,15 @@ export const ProductCard: FC<Props> = ({ id, imageUrl, name, price, className, i
   return (
     <div className={className}>
       <Link href={`product/${id}`}>
-        <div className='flex justify-center p-6 bg-secondary rounded-lg h-[260px]'>
-          <img className='w-[215px] h-[215px]' src={imageUrl} alt={name} />
+        <div className='flex h-[260px] justify-center rounded-lg bg-secondary p-6'>
+          <img className='h-[215px] w-[215px]' src={imageUrl} alt={name} />
         </div>
 
         <Title className='mb-1 mt-3 font-bold' text={name} size='sm' />
 
         <p className='text-sm text-gray-400'>{ingredients.map((ingredient) => ingredient.name).join(', ')}</p>
 
-        <div className='flex justify-between items-center mt-4'>
+        <div className='mt-4 flex items-center justify-between'>
           <span className='text-[20px]'>
             от <b>{formatterPrice(price)}</b>
           </span>

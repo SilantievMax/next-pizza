@@ -15,9 +15,9 @@ export type FilterCheckboxType = Props;
 export const FilterCheckbox: FC<Props> = ({ text, value, checked, endAdornment, name, onCheckedChange }) => {
   return (
     <div className='flex items-center space-x-2'>
-      <Checkbox onCheckedChange={onCheckedChange} checked={checked} value={value} className='rounded-[8px] w-6 h-6' id={`checkbox-${name}-${String(value)}`} />
+      <Checkbox onCheckedChange={onCheckedChange} checked={checked} value={value} className='h-6 w-6 rounded-[8px]' id={`checkbox-${name}-${String(value)}`} />
 
-      <label htmlFor={`checkbox-${name}-${String(value)}`} className='leading-none cursor-pointer flex-1'>
+      <label htmlFor={`checkbox-${name}-${String(value)}`} className='flex-1 cursor-pointer leading-none'>
         {text}
       </label>
 

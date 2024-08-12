@@ -13,8 +13,8 @@ interface Props extends CartItemProps {
 
 export const CheckoutItem: FC<Props> = ({ name, price, imageUrl, quantity, className, onClickCountButton, onClickRemove, details, disabled }) => {
   return (
-    <div className={cn('flex items-center justify-between', { 'opacity-50 pointer-events-none': disabled }, className)}>
-      <div className='flex items-center gap-5 flex-1'>
+    <div className={cn('flex items-center justify-between', { 'pointer-events-none opacity-50': disabled }, className)}>
+      <div className='flex flex-1 items-center gap-5'>
         <CartItemDetails.Image src={imageUrl} />
 
         <CartItemDetails.Info name={name} details={details} />
@@ -22,11 +22,11 @@ export const CheckoutItem: FC<Props> = ({ name, price, imageUrl, quantity, class
 
       <CartItemDetails.Price value={price} />
 
-      <div className='flex items-center gap-5 ml-20'>
+      <div className='ml-20 flex items-center gap-5'>
         <CartItemDetails.CountButton onClick={onClickCountButton} value={quantity} />
 
         <button type='button' onClick={onClickRemove}>
-          <X className='text-gray-400 cursor-pointer hover:text-gray-600' size={20} />
+          <X className='cursor-pointer text-gray-400 hover:text-gray-600' size={20} />
         </button>
       </div>
     </div>

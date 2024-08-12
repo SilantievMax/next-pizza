@@ -18,11 +18,11 @@ export const CheckoutSidebar: FC<Props> = ({ totalAmount, className, loading }) 
   const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice;
 
   return (
-    <WhiteBlock className={cn('p-6 sticky top-4', className)}>
+    <WhiteBlock className={cn('sticky top-4 p-6', className)}>
       <div className='flex flex-col gap-1'>
         <span className='text-xl'>Итог:</span>
 
-        {loading ? <Skeleton className='w-48 h-11 rounded-[6px]' /> : <span className='h-11 text-[34px] font-extrabold'>{formatterPrice(totalPrice)}</span>}
+        {loading ? <Skeleton className='h-11 w-48 rounded-[6px]' /> : <span className='h-11 text-[34px] font-extrabold'>{formatterPrice(totalPrice)}</span>}
       </div>
 
       <CheckoutItemDetail
@@ -31,7 +31,7 @@ export const CheckoutSidebar: FC<Props> = ({ totalAmount, className, loading }) 
             <Package className='mr-2 text-gray-400' size={18} /> Стоимость корзины:
           </div>
         }
-        value={loading ? <Skeleton className='w-24 h-6 rounded-[6px]' /> : formatterPrice(totalAmount)}
+        value={loading ? <Skeleton className='h-6 w-24 rounded-[6px]' /> : formatterPrice(totalAmount)}
       />
 
       <CheckoutItemDetail
@@ -40,7 +40,7 @@ export const CheckoutSidebar: FC<Props> = ({ totalAmount, className, loading }) 
             <Percent className='mr-2 text-gray-400' size={18} /> Налоги:
           </div>
         }
-        value={loading ? <Skeleton className='w-24 h-6 rounded-[6px]' /> : formatterPrice(vatPrice)}
+        value={loading ? <Skeleton className='h-6 w-24 rounded-[6px]' /> : formatterPrice(vatPrice)}
       />
 
       <CheckoutItemDetail
@@ -49,10 +49,10 @@ export const CheckoutSidebar: FC<Props> = ({ totalAmount, className, loading }) 
             <Truck className='mr-2 text-gray-400' size={18} /> Доставка
           </div>
         }
-        value={loading ? <Skeleton className='w-24 h-6 rounded-[6px]' /> : formatterPrice(DELIVERY_PRICE)}
+        value={loading ? <Skeleton className='h-6 w-24 rounded-[6px]' /> : formatterPrice(DELIVERY_PRICE)}
       />
 
-      <Button className='w-full h-14 rounded-2xl mt-6 text-base font-bold' type='submit' loading={loading}>
+      <Button className='mt-6 h-14 w-full rounded-2xl text-base font-bold' type='submit' loading={loading}>
         Перейти к оплате
         <ArrowRight className='ml-2' size={20} />
       </Button>

@@ -23,7 +23,7 @@ export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
 
-      <SheetContent className='flex flex-col justify-between pb-0 bg-[#F4F1EE]'>
+      <SheetContent className='flex flex-col justify-between bg-[#F4F1EE] pb-0'>
         {totalAmount > 0 ? (
           <>
             <SheetHeader>
@@ -32,7 +32,7 @@ export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
               </SheetTitle>
             </SheetHeader>
 
-            <div className='-mx-6 mt-5 overflow-auto scrollbar flex-1'>
+            <div className='scrollbar -mx-6 mt-5 flex-1 overflow-auto'>
               {items.map((item) => (
                 <div className='mb-1' key={item.id}>
                   <CartDrawerItem
@@ -52,17 +52,17 @@ export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
 
             <SheetFooter className='-mx-6 bg-white p-8'>
               <div className='w-full'>
-                <div className='flex mb-4'>
+                <div className='mb-4 flex'>
                   <span className='flex flex-1 text-lg text-neutral-500'>
                     Итого
-                    <div className='flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2' />
+                    <div className='relative -top-1 mx-2 flex-1 border-b border-dashed border-b-neutral-200' />
                   </span>
 
-                  <span className='font-bold text-lg'>{formatterPrice(totalAmount)}</span>
+                  <span className='text-lg font-bold'>{formatterPrice(totalAmount)}</span>
                 </div>
 
                 <Link href='/checkout'>
-                  <Button loading={redirecting} onClick={() => setRedirecting(true)} type='submit' className='w-full h-12 text-base'>
+                  <Button loading={redirecting} onClick={() => setRedirecting(true)} type='submit' className='h-12 w-full text-base'>
                     Оформить заказ
                     <ArrowRight size={20} className='ml-2' />
                   </Button>
@@ -71,15 +71,15 @@ export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
             </SheetFooter>
           </>
         ) : (
-          <div className='flex flex-col items-center justify-center w-72 mx-auto h-full'>
+          <div className='mx-auto flex h-full w-72 flex-col items-center justify-center'>
             <Image src='/images/empty-box.png' alt='Empty cart' width={120} height={120} />
 
-            <Title size='sm' text='Корзина пустая' className='text-center font-bold my-2' />
+            <Title size='sm' text='Корзина пустая' className='my-2 text-center font-bold' />
 
-            <p className='text-center text-neutral-500 mb-5'>Добавьте хотя бы одну позицию, чтобы совершить заказ</p>
+            <p className='mb-5 text-center text-neutral-500'>Добавьте хотя бы одну позицию, чтобы совершить заказ</p>
 
             <SheetClose>
-              <Button className='w-56 h-12 text-base' size='lg'>
+              <Button className='h-12 w-56 text-base' size='lg'>
                 <ArrowLeft className='mr-2' size={20} />
                 Вернуться назад
               </Button>

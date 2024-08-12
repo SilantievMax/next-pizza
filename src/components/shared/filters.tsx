@@ -50,9 +50,9 @@ export const Filters: FC<Props> = ({ className }) => {
       <CheckboxFiltersGroup name='sizes' title='Размер' className='mb-5' onClickCheckbox={filters.setSizes} items={sizesItems} selected={filters.sizes} />
 
       <div className='mt-5 border-y border-y-neutral-100 py-6 pb-7'>
-        <p className='font-bold mb-3'>Цена от и до:</p>
+        <p className='mb-3 font-bold'>Цена от и до:</p>
 
-        <div className='flex gap-3 mb-5 '>
+        <div className='mb-5 flex gap-3'>
           <Input
             min={0}
             max={1000}

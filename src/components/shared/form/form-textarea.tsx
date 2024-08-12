@@ -28,13 +28,13 @@ export const FormTextarea: FC<Props> = ({ className, name, label, required, ...p
   return (
     <div className={className}>
       {label && (
-        <p className='font-medium mb-2'>
+        <p className='mb-2 font-medium'>
           {label} {required && <RequiredSymbol />}
         </p>
       )}
 
       <div className='relative'>
-        <Textarea className='h-12 text-md' {...register(name)} {...props} />
+        <Textarea className='text-md h-12' {...register(name)} {...props} />
 
         {value && <ClearButton onClick={onClickClear} />}
       </div>
