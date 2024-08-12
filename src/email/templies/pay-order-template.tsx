@@ -12,7 +12,7 @@ interface Props {
 export function PayOrderTemplate({ orderId, paymentUrl, totalAmount }: Props) {
   return (
     <Layout>
-      <Heading>Заказ №{orderId}</Heading>
+      <Heading>Заказ #{orderId}</Heading>
 
       <Text>
         Оплатите заказ на сумму <b>{formatterPrice(totalAmount)}</b>. Перейдите{' '}

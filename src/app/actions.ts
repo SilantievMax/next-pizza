@@ -1,9 +1,9 @@
 'use server';
 
-import { sendMail } from '@/lib';
 import { cookies } from 'next/headers';
 import { OrderStatus } from '@prisma/client';
 import { prisma } from '@/prisma/prisma-client';
+import { createPayment, sendMail } from '@/lib';
 import { render } from '@react-email/components';
 import { PayOrderTemplate } from '@/email/templies';
 import { CheckoutFormValues } from '@/constants/checkout-form-schemas';
@@ -78,14 +78,35 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     });
 
-    // todo Сделать оплату
+    // Создание платижа
+    const paymentData = await createPayment({
+      orderId: order.id,
+      amount: order.totalAmount,
+      description: `Оплата заказа #${order.id}`,
+    });
 
+    if (!paymentData) {
+      throw new Error('Payment data not found');
+    }
+
+    await prisma.order.update({
+      where: {
+        id: order.id,
+      },
+      data: {
+        paymentId: paymentData.id,
+      },
+    });
+
+    const paymentUrl = paymentData.confirmation.confirmation_url;
+
+    // Оправка письма на почту
     const emailHtml = render(
       PayOrderTemplate({
         orderId: order.id,
         totalAmount: order.totalAmount,
-        paymentUrl: 'https://www.youtube.com/watch?v=GUwizGbY4cc&t=203s',
-      })
+        paymentUrl: paymentUrl,
+      }),
     );
 
     await sendMail({
@@ -95,21 +116,10 @@ export async function createOrder(data: CheckoutFormValues) {
       html: emailHtml,
     });
 
-    // todo добавить ссылку на оплату
-    return 'https://www.youtube.com/watch?v=GUwizGbY4cc&t=203s';
+    return paymentUrl;
   } catch (err) {
     console.log('[ACTIONS]', err);
 
-    // todo
-    return null;
-
-    // return NextResponse.json(
-    //   {
-    //     message: 'Не удалось оформить заказ',
-    //   },
-    //   {
-    //     status: 500,
-    //   }
-    // );
+    throw new Error('Order not found');
   }
 }
