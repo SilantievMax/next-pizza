@@ -2,9 +2,10 @@
 
 import { sendMail } from '@/lib';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
 import { OrderStatus } from '@prisma/client';
 import { prisma } from '@/prisma/prisma-client';
+import { render } from '@react-email/components';
+import { PayOrderTemplate } from '@/email/templies';
 import { CheckoutFormValues } from '@/constants/checkout-form-schemas';
 
 export async function createOrder(data: CheckoutFormValues) {
@@ -79,12 +80,19 @@ export async function createOrder(data: CheckoutFormValues) {
 
     // todo Сделать оплату
 
-    // todo Сделать отправку письма <PayOrderTemplate />
+    const emailHtml = render(
+      PayOrderTemplate({
+        orderId: order.id,
+        totalAmount: order.totalAmount,
+        paymentUrl: 'https://www.youtube.com/watch?v=GUwizGbY4cc&t=203s',
+      })
+    );
+
     await sendMail({
       fromEmail: 'Next Pizza',
       subject: `Next Pizza / Оплатите заказ #${order.id}`,
       toEmail: data.email,
-      html: '<PayOrderTemplate />', // todo нужно будет использовать react-email
+      html: emailHtml,
     });
 
     // todo добавить ссылку на оплату
