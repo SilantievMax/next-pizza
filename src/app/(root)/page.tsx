@@ -14,7 +14,7 @@ export default async function HomePage({ searchParams }: { searchParams: GetSear
 
       <TopBar categories={categories.filter((categorie) => categorie.products.length > 0)} />
 
-      <Container className='pb-14 mt-10'>
+      <Container className='mt-10 pb-14'>
         <div className='flex gap-[80px]'>
           <div className='w-[250px]'>
             <Suspense>
@@ -28,7 +28,7 @@ export default async function HomePage({ searchParams }: { searchParams: GetSear
                 (categorie) =>
                   categorie.products.length > 0 && (
                     <ProductsGroupList key={categorie.id} title={categorie.name} categoryId={categorie.id} products={categorie.products} />
-                  )
+                  ),
               )}
             </div>
           </div>

@@ -61,17 +61,17 @@ export default function CheckoutPage() {
 
   return (
     <Container className='mt-10'>
-      <Title text='Оформление заказа' size='xl' className='font-extrabold mb-8' />
+      <Title text='Оформление заказа' size='xl' className='mb-8 font-extrabold' />
 
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <div className='flex gap-10'>
-            <div className='flex flex-col gap-10 flex-1 mb-20'>
+            <div className='mb-20 flex flex-1 flex-col gap-10'>
               <CheckoutCart items={items} removeCartItem={removeCartItem} onClickCountButton={onClickCountButton} loading={isLoading} />
 
-              <CheckoutPersonalForm className={cn({ 'opacity-40 pointer-events-none': isLoading })} />
+              <CheckoutPersonalForm className={cn({ 'pointer-events-none opacity-40': isLoading })} />
 
-              <CheckoutAddressForm className={cn({ 'opacity-40 pointer-events-none': isLoading })} />
+              <CheckoutAddressForm className={cn({ 'pointer-events-none opacity-40': isLoading })} />
             </div>
 
             <div className='w-[450px]'>

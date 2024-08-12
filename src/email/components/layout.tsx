@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
-import { Font, Head, Html } from '@react-email/components';
+import { Logo } from '@/email/components';
+import { Column, Font, Head, Hr, Html, Row, Section } from '@react-email/components';
 
 interface Props {
   children: ReactNode;
@@ -21,7 +22,15 @@ export function Layout({ children }: Props) {
         />
       </Head>
 
-      {children}
+      <Logo />
+
+      <Hr />
+
+      <Section>
+        <Row>
+          <Column style={{ paddingTop: '16px' }}>{children}</Column>
+        </Row>
+      </Section>
     </Html>
   );
 }
