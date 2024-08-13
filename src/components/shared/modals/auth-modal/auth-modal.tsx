@@ -30,7 +30,7 @@ export const AuthModal: FC<Props> = ({ isOpen, onClose }) => {
       <DialogContent className='w-[450px] bg-white p-10'>
         {type === 'login' && <LoginForm onClose={handleClose} />}
 
-        {type === 'register' && <RegisterForm />}
+        {type === 'register' && <RegisterForm onClose={handleClose} />}
 
         <hr />
 

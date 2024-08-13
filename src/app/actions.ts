@@ -5,10 +5,10 @@ import { cookies } from 'next/headers';
 import { prisma } from '@/prisma/prisma-client';
 import { createPayment, sendMail } from '@/lib';
 import { render } from '@react-email/components';
-import { PayOrderTemplate } from '@/email/templies';
 import { OrderStatus, Prisma } from '@prisma/client';
 import { getUserSession } from '@/lib/get-user-session';
 import { CheckoutFormValues } from '@/constants/checkout-form-schemas';
+import { PayOrderTemplate, VerificationUserTemplate } from '@/email/templies';
 
 export async function createOrder(data: CheckoutFormValues) {
   try {
@@ -153,5 +153,56 @@ export async function updateUserInfo(body: Prisma.UserUpdateInput) {
   } catch (error) {
     console.log('Error [UPDATE_USER]', error);
     throw error;
+  }
+}
+
+export async function registerUser(body: Prisma.UserCreateInput) {
+  try {
+    const user = await prisma.user.findFirst({
+      where: {
+        email: body.email,
+      },
+    });
+
+    if (user) {
+      if (!user.verified) {
+        throw new Error('Почта не подтверждена');
+      }
+
+      throw new Error('Пользователь уже существует');
+    }
+
+    const createdUser = await prisma.user.create({
+      data: {
+        fullName: body.fullName,
+        email: body.email,
+        password: hashSync(body.password, 10),
+      },
+    });
+
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+
+    await prisma.verificationCode.create({
+      data: {
+        code,
+        userId: createdUser.id,
+      },
+    });
+
+    const emailHtml = render(
+      VerificationUserTemplate({
+        code,
+      }),
+    );
+
+    await sendMail({
+      fromEmail: 'Next Pizza',
+      subject: `Next Pizza / Подтвердите регистрацию`,
+      toEmail: createdUser.email,
+      html: emailHtml,
+    });
+  } catch (err) {
+    console.log('Error [CREATE_USER]', err);
+    throw err;
   }
 }

@@ -31,12 +31,16 @@ export const LoginForm: FC<Props> = ({ onClose }) => {
         throw Error();
       }
 
-      toast.success('Вы успешно вошли в аккаунт', { icon: '✅' });
+      toast.success('Вы успешно вошли в аккаунт', {
+        icon: '✅',
+      });
 
       onClose?.();
     } catch (err) {
       console.log('[LOGIN FORM]', err);
-      toast.error('Не удалось войти в аккаунт', { icon: '❌' });
+      toast.error('Не удалось войти в аккаунт', {
+        icon: '❌',
+      });
     }
   };
 

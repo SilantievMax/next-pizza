@@ -19,9 +19,19 @@ export const Header: FC<Props> = ({ className, hasSearch = true, hasCart = true 
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    let toastMessage = '';
+
     if (searchParams.has('paid')) {
+      toastMessage = 'Заказ успешно оплачен! Информация отправлена на почту.';
+    }
+
+    if (searchParams.has('verified')) {
+      toastMessage = 'Почта успешно подтверждина!';
+    }
+
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success('Заказ успешно оплачен! Информация отправлена на почту.');
+        toast.success(toastMessage);
       }, 500);
     }
   }, []);
