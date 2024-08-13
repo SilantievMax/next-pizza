@@ -3,12 +3,10 @@
 import { cn } from '@/lib';
 import Link from 'next/link';
 import Image from 'next/image';
-import { User } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { FC, useEffect } from 'react';
-import { Button } from '@/components/ui';
+import { FC, useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { CartButton, Container, SearchInput } from '@/components/shared';
+import { AuthModal, CartButton, Container, ProfileButton, SearchInput } from '@/components/shared';
 
 interface Props {
   hasCart?: boolean;
@@ -17,6 +15,7 @@ interface Props {
 }
 
 export const Header: FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
+  const [openAuthModal, setOpenAuthModal] = useState(false);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -49,10 +48,9 @@ export const Header: FC<Props> = ({ className, hasSearch = true, hasCart = true 
           )}
 
           <div className='flex items-center gap-3'>
-            <Button variant='outline' className='flex items-center gap-1'>
-              <User size={16} />
-              Войти
-            </Button>
+            <AuthModal isOpen={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+
+            <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
 
             {hasCart && (
               <div>

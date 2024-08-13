@@ -7,7 +7,7 @@ import * as CartItemDetails from '@/components/shared/cart-item-details';
 import { CartItemProps } from './cart-item-details/cart-item-details.types';
 
 interface Props extends CartItemProps {
-  onClickRemove?: () => void;
+  onClickRemove?: VoidFunction;
   onClickCountButton?: (type: 'plus' | 'minus') => void;
 }
 

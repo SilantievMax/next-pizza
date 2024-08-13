@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { Toaster } from 'react-hot-toast';
 import { Nunito } from 'next/font/google';
+import { Providers } from '@/components/shared';
 
 import './globals.css';
 
@@ -10,9 +10,7 @@ export default function GlobalLayout({ children }: Readonly<{ children: ReactNod
   return (
     <html lang='en'>
       <body className={nunito.className}>
-        {children}
-
-        <Toaster />
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

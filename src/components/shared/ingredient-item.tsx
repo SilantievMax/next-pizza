@@ -8,7 +8,7 @@ interface Props {
   imageUrl: string;
   active?: boolean;
   className?: string;
-  onClick?: () => void;
+  onClick?: VoidFunction;
 }
 
 export const IngredientItem: FC<Props> = ({ imageUrl, name, price, active, className, onClick }) => {
