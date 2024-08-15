@@ -49,7 +49,7 @@ export const AuthModal: FC<Props> = ({ isOpen, onClose }) => {
               })
             }
             type='button'
-            className='h-12 flex-1 gap-2 p-2'
+            className='pointer-events-none h-12 flex-1 cursor-not-allowed gap-2 p-2'
           >
             <GoogleIcon className='h-6 w-6' />
             Google

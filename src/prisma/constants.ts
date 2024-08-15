@@ -244,3 +244,67 @@ export const cartItems = {
     connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
   },
 };
+
+export const story = [
+  {
+    previewImageUrl: '/stories/story-1.webp',
+  },
+  {
+    previewImageUrl: '/stories/story-2.webp',
+  },
+  {
+    previewImageUrl: '/stories/story-3.webp',
+  },
+  {
+    previewImageUrl: '/stories/story-4.webp',
+  },
+  {
+    previewImageUrl: '/stories/story-5.webp',
+  },
+  {
+    previewImageUrl: '/stories/story-6.webp',
+  },
+];
+
+export const storyItem = [
+  {
+    storyId: 1,
+    sourceUrl: '/stories/story-item-1.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl: '/stories/story-item-2.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl: '/stories/story-item-3.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl: '/stories/story-item-4.webp',
+  },
+  {
+    storyId: 1,
+    sourceUrl: '/stories/story-item-5.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl: '/stories/story-item-1.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl: '/stories/story-item-2.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl: '/stories/story-item-3.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl: '/stories/story-item-4.webp',
+  },
+  {
+    storyId: 2,
+    sourceUrl: '/stories/story-item-5.webp',
+  },
+];

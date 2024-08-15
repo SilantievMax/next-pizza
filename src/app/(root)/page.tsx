@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { findPizzas } from '@/lib';
 import { GetSearchParams } from '@/lib/find-pizzas';
-import { Container, Filters, ProductsGroupList, Title, TopBar } from '@/components/shared';
+import { Container, Filters, ProductsGroupList, Stories, Title, TopBar } from '@/components/shared';
 
 export default async function HomePage({ searchParams }: { searchParams: GetSearchParams }) {
   const categories = await findPizzas(searchParams);
@@ -13,6 +13,8 @@ export default async function HomePage({ searchParams }: { searchParams: GetSear
       </Container>
 
       <TopBar categories={categories.filter((categorie) => categorie.products.length > 0)} />
+
+      <Stories />
 
       <Container className='mt-10 pb-14'>
         <div className='flex gap-[80px]'>
