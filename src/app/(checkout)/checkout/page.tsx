@@ -1,17 +1,20 @@
 'use client';
 
 import { cn } from '@/lib';
-import { useState } from 'react';
 import { useCart } from '@/hooks';
 import toast from 'react-hot-toast';
 import { redirect } from 'next/navigation';
 import { createOrder } from '@/app/actions';
+import { Api } from '@/services/api-client';
+import { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { checkoutFormSchema, CheckoutFormValues } from '@/constants/checkout-form-schemas';
 import { CheckoutSidebar, Container, Title, CheckoutCart, CheckoutPersonalForm, CheckoutAddressForm } from '@/components/shared';
 
 export default function CheckoutPage() {
+  const { data: session } = useSession();
   const [submitting, setSubmitting] = useState(false);
   const { items, removeCartItem, totalAmount, updateItemQuantity, loading } = useCart();
 
@@ -58,6 +61,21 @@ export default function CheckoutPage() {
   if (items.length === 0) {
     redirect('/');
   }
+
+  useEffect(() => {
+    async function fetchUserInfo() {
+      const data = await Api.auth.getMe();
+      const [firstName, lastName] = data.fullName.split(' ');
+
+      form.setValue('firstName', firstName);
+      form.setValue('lastName', lastName);
+      form.setValue('email', data.email);
+    }
+
+    if (session) {
+      fetchUserInfo();
+    }
+  }, [session]);
 
   return (
     <Container className='mt-10'>

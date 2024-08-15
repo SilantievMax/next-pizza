@@ -9,7 +9,6 @@ interface Props {
   onChange?: (value?: string) => void;
 }
 
-// todo
 const apiKeyDadata = process.env.API_KEY_DADATA || '';
 
 export const AdressInput: FC<Props> = ({ onChange }) => {
